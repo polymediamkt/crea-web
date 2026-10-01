@@ -1,0 +1,33 @@
+# Material de origen que el sitio no usa. Se conserva en disco, fuera del repo.
+# Todo lo que el sitio sí carga está referenciado desde index.html / css / js.
+
+# Original 4K del video del hero (45 MB). El publicado es assets/video/hero-obra.mp4.
+assets/14134286-uhd_3840_2160_25fps.mp4
+
+# Fuente JPEG original de la foto de "Nosotros" (4.6 MB). Se usa la version WebP.
+assets/img/stock/scott-blake-x-ghf9LjrVg-unsplash.jpg
+
+# Fotos de obra del hero anterior, ya reemplazadas por el video.
+assets/img/stock/hero-construccion-*.webp
+
+# Alternativa de la foto de "Cómo trabajamos". El photo-id queda en AGENTS.md.
+assets/img/stock/alt-proceso-arquitectos-*.webp
+
+# Fotos de servicio del sitio anterior.
+assets/img/proyectos/service-*.webp
+
+# Variante de ancho que el arreglo PROYECTOS de js/main.js no pide.
+assets/img/obra/crea-project-12-1200.webp
+
+# Copia de seguridad de una version previa de index.html.
+index.qa.bak
+
+# Maqueta de referencia visual. No es parte del sitio.
+REFERENCIAS/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+*~
+*.tmp
+*.orig
