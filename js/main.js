@@ -19,8 +19,153 @@
   // muestra un error y ofrece WhatsApp.
   var WEB3FORMS_ACCESS_KEY = 'POR_CONFIGURAR';
 
-  var WHATSAPP_LABEL = '+52 998 200 2552';
   var ATTR_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'];
+
+  /* ------------------------------------------------------------------
+     CONTACTO — única fuente de verdad de los canales de contacto.
+
+     Para cambiar un número, correo o mensaje, edita solo este objeto.
+     El teléfono de llamadas comparte el número del WhatsApp; si CREA da
+     otro celular, cambia solo `telefono` y `telefonoLabel`.
+     ------------------------------------------------------------------ */
+
+  var CONTACTO = {
+    whatsapp: '5219982002552',
+    whatsappLabel: '+52 1 998 200 2552',
+    telefono: '+529982002552',
+    telefonoLabel: '+52 998 200 2552',
+    correo: 'info@creaqr.mx',
+    facebook: 'https://www.facebook.com/CREAQR.MX/'
+  };
+
+  var WHATSAPP_LABEL = CONTACTO.telefonoLabel;
+
+  /* Servicios admitidos por la página de contacto. La clave viaja en la
+     URL (?servicio=...) y el valor es el texto que se muestra y se envía. */
+  var SERVICIOS = {
+    construccion: 'Construcción',
+    mantenimiento: 'Mantenimiento',
+    arquitectura: 'Arquitectura',
+    diseno: 'Diseño',
+    'aire-acondicionado': 'Aire acondicionado'
+  };
+
+  var MENSAJES_WA = {
+    base: 'Hola, me gustaría cotizar un proyecto con CREA.',
+    construccion: 'Hola, me interesa el servicio de construcción con CREA.',
+    mantenimiento: 'Hola, me interesa el servicio de mantenimiento con CREA.',
+    arquitectura: 'Hola, me interesa el servicio de arquitectura con CREA.',
+    diseno: 'Hola, me interesa el servicio de diseño con CREA.',
+    'aire-acondicionado': 'Hola, me interesa cotizar la instalación de aire acondicionado con CREA.'
+  };
+
+  // Mensajes del servicio de aire acondicionado en función del paquete.
+  var AACC = {
+    wa: 'Hola, me interesa cotizar la instalación de aire acondicionado con CREA.',
+    waBasico: 'Hola, me interesa el paquete básico de instalación de aire acondicionado con CREA.',
+    label: 'Aire acondicionado',
+    asunto: 'Instalación de aire acondicionado — CREA'
+  };
+
+  var TIPOS_MANTENIMIENTO = {
+    preventivo: {
+      wa: 'Hola, me interesa el mantenimiento preventivo con CREA.',
+      label: 'Mantenimiento preventivo'
+    },
+    correctivo: {
+      wa: 'Hola, necesito mantenimiento correctivo con CREA.',
+      label: 'Mantenimiento correctivo'
+    },
+    poliza: {
+      wa: 'Hola, me interesa una póliza de mantenimiento con CREA.',
+      label: 'Mantenimiento · Póliza',
+      asunto: 'Póliza de mantenimiento — CREA'
+    }
+  };
+
+  /* Sectores del mantenimiento. La clave viaja en la URL (?sector=...) y el
+     valor es el texto que se muestra y se envía. */
+  var SECTORES = {
+    residencial: 'Residencial',
+    comercial: 'Comercial',
+    industrial: 'Industrial'
+  };
+
+  // URL de una página interna relativa a la raíz del sitio. Sirve tanto en
+  // dominio propio (raíz) como en GitHub Pages bajo /crea-web/, porque se
+  // calcula desde la profundidad del documento actual.
+  function urlRaiz(path) {
+    var depth = (window.location.pathname.replace(/\/[^/]*$/, '/').match(/\//g) || []).length - 1;
+    var prefijo = '';
+    for (var i = 0; i < depth; i++) prefijo += '../';
+    return prefijo + path;
+  }
+
+  function waLink(mensaje) {
+    return 'https://wa.me/' + CONTACTO.whatsapp + '?text=' + encodeURIComponent(mensaje);
+  }
+
+  // Lee ?servicio=, ?tipo= y ?sector= de la URL. Un valor desconocido o
+  // ausente se ignora y se cae al mensaje genérico.
+  function leerParametros() {
+    var params = new URLSearchParams(window.location.search);
+    var servKey = (params.get('servicio') || '').toLowerCase();
+    var tipoKey = (params.get('tipo') || '').toLowerCase();
+    var sectorKey = (params.get('sector') || '').toLowerCase();
+    var paqueteKey = (params.get('paquete') || '').toLowerCase();
+
+    var servicio = SERVICIOS[servKey] || null;
+    var tipo = null;
+    var esMantenimiento = servKey === 'mantenimiento';
+    var esAire = servKey === 'aire-acondicionado';
+
+    if (esMantenimiento && TIPOS_MANTENIMIENTO[tipoKey]) {
+      tipo = TIPOS_MANTENIMIENTO[tipoKey];
+    }
+
+    // El sector solo aplica al mantenimiento.
+    var sector = esMantenimiento ? (SECTORES[sectorKey] || null) : null;
+    // El paquete solo aplica al aire acondicionado.
+    var paquete = (esAire && paqueteKey === 'basico') ? 'basico' : null;
+
+    // Mensaje de WhatsApp y asunto del correo con esta prioridad:
+    // póliza > sector > paquete > tipo (preventivo/correctivo) > servicio > genérico.
+    var wa, etiqueta, asunto;
+
+    if (tipo && tipoKey === 'poliza') {
+      wa = tipo.wa;
+      etiqueta = tipo.label;
+      asunto = tipo.asunto;
+    } else if (sector) {
+      wa = 'Hola, me interesa el mantenimiento preventivo y correctivo para obra ' +
+        sector.toLowerCase() + ' con CREA.';
+      etiqueta = 'Mantenimiento · ' + sector;
+      asunto = 'Mantenimiento ' + sector + ' — CREA';
+    } else if (esAire) {
+      wa = paquete === 'basico' ? AACC.waBasico : AACC.wa;
+      etiqueta = AACC.label;
+      asunto = AACC.asunto;
+    } else if (esMantenimiento && tipo) {
+      wa = tipo.wa;
+      etiqueta = tipo.label;
+    } else {
+      wa = MENSAJES_WA[servKey] || MENSAJES_WA.base;
+      // "Construcción" -> "construcción" para armar el asunto del correo.
+      etiqueta = servicio ? servicio : '';
+    }
+
+    return {
+      servicioKey: servKey,
+      servicio: servicio,
+      tipo: tipo,
+      tipoKey: tipoKey,
+      sector: sector,
+      paquete: paquete,
+      wa: wa,
+      etiqueta: etiqueta,
+      asunto: asunto || null
+    };
+  }
 
   /* ------------------------------------------------------------------
      PORTAFOLIO — lista única de proyectos (fuente de verdad)
@@ -150,6 +295,103 @@
   });
 
   /* ------------------------------------------------------------------
+     1b. Página de contacto (contacto/index.html)
+
+     Solo corre si existe el marcador `[data-contacto]`. Personaliza la
+     página según ?servicio= y ?tipo=, arma los enlaces de WhatsApp,
+     correo y llamada, y gestiona el botón "copiar correo".
+     ------------------------------------------------------------------ */
+
+  (function initContacto() {
+    var root = document.querySelector('[data-contacto]');
+    if (!root) return;
+
+    var cfg = leerParametros();
+
+    // Etiqueta de contexto ("Servicio: Mantenimiento · Residencial") en el hero.
+    var label = root.querySelector('[data-servicio-label]');
+    var labelBox = root.querySelector('[data-servicio-box]');
+    if (label && labelBox && cfg.etiqueta) {
+      label.textContent = 'Servicio: ' + cfg.etiqueta;
+      labelBox.removeAttribute('hidden');
+    }
+
+    // Botones de WhatsApp: enlace personalizado según el servicio.
+    var waHref = waLink(cfg.wa);
+    root.querySelectorAll('[data-contacto="whatsapp"][data-wa]').forEach(function (a) {
+      a.setAttribute('href', waHref);
+    });
+
+    // Correo: asunto y cuerpo personalizados (mailto) + texto directo.
+    var etiquetaMin = cfg.etiqueta ? cfg.etiqueta.toLowerCase() : '';
+    var asunto = cfg.asunto || (cfg.etiqueta ? 'Cotización de ' + etiquetaMin + ' — CREA' : 'Cotización — CREA');
+    var cuerpo = 'Hola CREA,\n\n' +
+      'Me gustaría cotizar' + (etiquetaMin ? ' un proyecto de ' + etiquetaMin : ' un proyecto') + '.\n\n' +
+      'Nombre:\n' +
+      'Teléfono:\n' +
+      'Descripción del proyecto:\n';
+    var mailHref = 'mailto:' + CONTACTO.correo +
+      '?subject=' + encodeURIComponent(asunto) +
+      '&body=' + encodeURIComponent(cuerpo);
+    root.querySelectorAll('[data-contacto="correo"][data-mail]').forEach(function (a) {
+      a.setAttribute('href', mailHref);
+    });
+
+    // Preselecciona el tipo de proyecto del formulario.
+    var select = root.querySelector('#f-tipo');
+    if (select && cfg.servicio) {
+      Array.prototype.forEach.call(select.options, function (opt) {
+        if (opt.value === cfg.servicio) select.value = cfg.servicio;
+      });
+    }
+
+    // Campo oculto con el tipo de mantenimiento (preventivo/correctivo/póliza).
+    var tipoInput = root.querySelector('[data-tipo-field]');
+    if (tipoInput) tipoInput.value = cfg.tipo ? cfg.tipo.label : '';
+
+    // Campo oculto con el sector (residencial/comercial/industrial).
+    var sectorInput = root.querySelector('[data-sector-field]');
+    if (sectorInput) sectorInput.value = cfg.sector || '';
+
+    // Campo oculto con el paquete (aire acondicionado).
+    var paqueteInput = root.querySelector('[data-paquete-field]');
+    if (paqueteInput) paqueteInput.value = cfg.paquete || '';
+
+    // Botón "copiar correo" con aviso accesible.
+    var copyBtn = root.querySelector('[data-contacto="correo-copiar"]');
+    var copyMsg = root.querySelector('[data-copy-status]');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        var done = function (ok) {
+          if (copyMsg) {
+            copyMsg.textContent = ok
+              ? 'Correo copiado: ' + CONTACTO.correo
+              : 'No pudimos copiar. El correo es ' + CONTACTO.correo;
+          }
+          track('contacto_correo_copiar', { ok: ok });
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(CONTACTO.correo).then(function () { done(true); }, function () { done(false); });
+        } else {
+          done(false);
+        }
+      });
+    }
+
+    // Medición de los canales.
+    var waBtn = root.querySelector('[data-contacto="whatsapp"][data-track-canal]');
+    if (waBtn) waBtn.addEventListener('click', function () {
+      track('contacto_whatsapp', { servicio: cfg.servicio || null, tipo: cfg.tipo ? cfg.tipo.label : null, sector: cfg.sector || null });
+    });
+    var callBtn = root.querySelector('[data-contacto="llamar"]');
+    if (callBtn) callBtn.addEventListener('click', function () { track('contacto_llamar', {}); });
+    var mailBtn = root.querySelector('[data-contacto="correo"][data-track-canal]');
+    if (mailBtn) mailBtn.addEventListener('click', function () {
+      track('contacto_correo', { servicio: cfg.servicio || null });
+    });
+  })();
+
+  /* ------------------------------------------------------------------
      2. Menú móvil colapsable
      ------------------------------------------------------------------ */
 
@@ -190,14 +432,13 @@
      2b. Banda de logos — carrusel infinito horizontal
      ------------------------------------------------------------------ */
 
-  (function initMarquee() {
-    var root = document.querySelector('[data-marquee]');
-    var trackEl = root && root.querySelector('[data-marquee-track]');
-    var group = root && root.querySelector('[data-marquee-group]');
-    var viewport = root && root.querySelector('.marquee-viewport');
-    var btnToggle = root && root.querySelector('[data-marquee-toggle]');
-    var btnPrev = root && root.querySelector('[data-marquee-prev]');
-    var btnNext = root && root.querySelector('[data-marquee-next]');
+  function buildMarquee(root) {
+    var trackEl = root.querySelector('[data-marquee-track]');
+    var group = root.querySelector('[data-marquee-group]');
+    var viewport = root.querySelector('.marquee-viewport');
+    var btnToggle = root.querySelector('[data-marquee-toggle]');
+    var btnPrev = root.querySelector('[data-marquee-prev]');
+    var btnNext = root.querySelector('[data-marquee-next]');
     if (!trackEl || !group || !viewport) return;
 
     // El grupo clonado solo rellena el bucle: no debe leerse dos veces.
@@ -371,7 +612,12 @@
     Array.prototype.forEach.call(group.querySelectorAll('img'), function (im) {
       if (!im.complete) im.addEventListener('load', function () { measure(); apply(); });
     });
-  })();
+  }
+
+  // Cada banda de logos de la página (clientes en el inicio, marcas en la
+  // página de aire acondicionado) usa el mismo componente.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-marquee]'), buildMarquee);
+
   (function initHeroVideo() {
     var root = document.querySelector('.hero-media');
     var video = root && root.querySelector('.hero-video');
@@ -599,7 +845,20 @@
     var sendLabel = sendBtn.textContent;
     var keyInput = form.querySelector('input[name="access_key"]');
     var honeypot = form.querySelector('input[name="botcheck"]');
+    var tipoInput = form.querySelector('[data-tipo-field]');
+    var subjectInput = form.querySelector('input[name="subject"]');
     var statusTimer = null;
+
+    // Asunto del correo + campo "tipo" opcional (mantenimiento preventivo/correctivo/póliza).
+    var cfgForm = leerParametros();
+    if (subjectInput) {
+      subjectInput.value = cfgForm.asunto
+        ? cfgForm.asunto + ' (sitio web)'
+        : (cfgForm.etiqueta
+          ? 'Cotización de ' + cfgForm.etiqueta.toLowerCase() + ' — CREA (sitio web)'
+          : 'Cotización — CREA (sitio web)');
+    }
+    if (tipoInput && cfgForm.tipo) tipoInput.value = cfgForm.tipo.label;
 
     function setStatus(text, kind) {
       if (statusTimer) { clearTimeout(statusTimer); statusTimer = null; }
@@ -670,17 +929,22 @@
         })
         .then(function (r) {
           if (r.ok && r.json && r.json.success) {
-            track('form_submit', { tipo: form.tipo_proyecto.value });
+            track('form_submit', { tipo: form.tipo_proyecto.value, canal: 'contacto_formulario' });
             setStatus('Gracias, ' + nombre.value.trim() + '. Tu mensaje llegó a nuestro correo: te respondemos a ' + correo.value.trim() + '.', 'ok');
             form.reset();
             form.querySelectorAll('[data-utm]').forEach(function (i) { i.value = ATTR[i.getAttribute('data-utm')] || ''; });
+            if (tipoInput) tipoInput.value = cfgForm.tipo ? cfgForm.tipo.label : '';
+            var sectorInput = form.querySelector('[data-sector-field]');
+            if (sectorInput) sectorInput.value = cfgForm.sector || '';
+            var paqueteInput = form.querySelector('[data-paquete-field]');
+            if (paqueteInput) paqueteInput.value = cfgForm.paquete || '';
           } else {
             throw new Error((r.json && r.json.message) || 'Respuesta no válida del servicio de envío');
           }
         })
         .catch(function (err) {
           track('form_error', { motivo: String(err && err.message || err).slice(0, 120) });
-          setStatus('No pudimos enviar el mensaje. Inténtalo de nuevo o escríbenos por WhatsApp al ' + WHATSAPP_LABEL + '.', 'error');
+          setStatus('No pudimos enviar el mensaje. Inténtalo de nuevo o escríbenos por WhatsApp al ' + CONTACTO.telefonoLabel + '.', 'error');
         })
         .then(function () {
           sendBtn.disabled = false;

@@ -589,85 +589,71 @@ header {
   background: var(--soft);
 }
 
-.mantenimiento-grid {
+.sectores-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  align-items: center;
-  margin-bottom: 36px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 44px;
 }
 
-.mantenimiento-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.m-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--rs);
-  padding: 26px;
+.sector-card {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 260px;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 30px;
 }
 
-.m-card h3 {
-  font-size: 20px;
-  margin: 0;
+.sector-icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--blue);
+  border-radius: 16px;
+  color: var(--blue);
+  flex: 0 0 auto;
+}
+
+.sector-icon svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.sector-line {
+  width: 56px;
+  height: 2px;
+  background: var(--blue);
+  margin: 24px 0 20px;
+}
+
+.sector-card h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
   font-weight: 800;
   text-transform: uppercase;
+  letter-spacing: .02em;
 }
 
-.m-card p {
+.sector-card p {
   margin: 0;
   color: #6f6f6f;
   font-size: 14px;
   line-height: 1.7;
-  flex: 1 1 auto;
 }
 
-.m-card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  color: var(--blue);
-  font-size: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .07em;
-  border-bottom: 2px solid transparent;
-  align-self: flex-start;
-}
-
-.m-card-cta:hover {
-  border-bottom-color: var(--blue);
-}
-
-.mantenimiento-media {
-  position: relative;
-}
-
-.mantenimiento-figure {
-  margin: 0;
-  border-radius: var(--r);
-  overflow: hidden;
-  box-shadow: 0 20px 60px #0001;
-}
-
-.mantenimiento-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1200 / 800;
-  object-fit: cover;
+.sectores-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 44px;
 }
 
 .mantenimiento-areas {
-  margin-bottom: 28px;
+  margin-bottom: 44px;
 }
 
 .area-chips {
@@ -693,11 +679,52 @@ header {
   color: #6f6f6f;
 }
 
-.mantenimiento-cta {
+.mantenimiento-banner {
+  position: relative;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  background: var(--black);
+  border-radius: var(--r);
+  padding: 44px 46px;
+  margin-bottom: 18px;
+}
+
+.mantenimiento-banner:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#0088ff2e 1px, transparent 1px),
+    linear-gradient(90deg, #0088ff2e 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.mantenimiento-banner-txt {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  flex: 1 1 380px;
+  font-family: Anton, Impact, sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: .98;
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 46px);
+  max-width: 620px;
+}
+
+.mantenimiento-banner-txt span {
+  color: var(--blue);
+}
+
+.mantenimiento-banner .btn {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
 }
 
 .mantenimiento-note {
@@ -709,8 +736,21 @@ header {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 13px;
+}
+
+/* 5 tarjetas: 3 arriba y 2 abajo, centradas. */
+.services-grid > .card {
+  grid-column: span 2;
+}
+
+.services-grid > .card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.services-grid > .card:nth-child(5) {
+  grid-column: 4 / span 2;
 }
 
 .cards {
@@ -2010,8 +2050,26 @@ footer {
   .proceso-grid,
   .about,
   .contact-grid,
+  .sectores-grid,
   .legal-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sectores-grid {
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+
+  .sector-card {
+    padding: 26px;
+  }
+
+  .mantenimiento-banner {
+    padding: 32px 26px;
+  }
+
+  .mantenimiento-banner .btn {
+    width: 100%;
   }
 
   .card {
@@ -2160,6 +2218,471 @@ footer {
 
   .logo img {
     max-width: 68px;
+  }
+}
+
+/* ---------- 17c. Banda de cierre (inicio) ---------- */
+
+.closing {
+  background: var(--blue);
+  color: #fff;
+}
+
+.closing-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.closing .eyebrow {
+  color: #fff;
+}
+
+.closing h2 {
+  font-size: clamp(38px, 4.6vw, 62px);
+  margin: 12px 0 0;
+  max-width: 720px;
+}
+
+.closing-lead {
+  margin: 14px 0 0;
+  max-width: 560px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.closing-actions {
+  flex: 0 0 auto;
+}
+
+/* ---------- 17c-bis. Página de aire acondicionado ---------- */
+
+/* El hero reutiliza la foto (no el video): sin duotono y con la imagen
+   cubriendo el recuadro, no estirada. */
+.aire-hero-media:after {
+  content: none;
+}
+
+.aire-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.paquete-card {
+  background: var(--blue);
+  color: #fff;
+  border-radius: var(--r);
+  padding: clamp(30px, 4vw, 56px);
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.paquete-card h2 {
+  font-size: clamp(34px, 4.4vw, 58px);
+  margin: 12px 0 0;
+  max-width: 620px;
+}
+
+.paquete-sub {
+  margin: 16px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.paquete-list {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.paquete-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.paquete-list li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230088ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.paquete-note {
+  margin: 22px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #ffffffd9;
+  max-width: 620px;
+}
+
+.pilares-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.pilar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 34px 28px;
+}
+
+.pilar-card h3 {
+  font-size: 19px;
+  margin: 20px 0 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pilar-card p {
+  margin: 0;
+  color: #6f6f6f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.marcas {
+  background: #fff;
+  padding: 44px 0 30px;
+}
+
+.marcas-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 24px;
+}
+
+.marcas-title {
+  font-size: clamp(24px, 2.8vw, 36px);
+  margin: 0;
+}
+
+.marcas-marquee {
+  margin-top: 0;
+}
+
+.marcas-group .client img {
+  max-height: 52px;
+}
+
+.marcas-note {
+  margin: 22px auto 0;
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
+
+/* ---------- 17d. Página de contacto ---------- */
+
+.contacto-hero {
+  background: #fff;
+  padding-bottom: 40px;
+}
+
+.contacto-hero .display {
+  font-size: clamp(46px, 7vw, 92px);
+  margin: 12px 0 0;
+  max-width: 900px;
+}
+
+.contacto-lead {
+  margin: 18px 0 0;
+  max-width: 520px;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.servicio-box {
+  margin: 20px 0 0;
+}
+
+.servicio-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #e6f2ff;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.contacto-canales {
+  background: var(--soft);
+  padding-top: 60px;
+}
+
+.contacto-h2 {
+  font-size: clamp(30px, 3.4vw, 46px);
+  margin: 0 0 40px;
+}
+
+.canales-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.canal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--rs);
+  padding: 26px 24px;
+  position: relative;
+}
+
+/* WhatsApp: la tarjeta más visible de las cuatro. */
+.canal--destacado {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  transform: translateY(-10px);
+  box-shadow: 0 26px 60px #0088ff33;
+}
+
+.canal-tag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.canal-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #eef4fb;
+  color: var(--blue);
+}
+
+.canal-ico svg {
+  width: 26px;
+  height: 26px;
+}
+
+.canal--destacado .canal-ico {
+  background: #ffffff26;
+  color: #fff;
+}
+
+.canal-title {
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.canal-text {
+  margin: 0;
+  color: #6f6f6f;
+  font-size: 14px;
+  line-height: 1.7;
+  flex: 1 1 auto;
+}
+
+.canal--destacado .canal-text {
+  color: #fff;
+}
+
+.canal-btn {
+  width: 100%;
+}
+
+.canal-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.canal--destacado .canal-meta {
+  color: #fff;
+}
+
+.canal-note {
+  display: block;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a8a8a;
+}
+
+.canal--destacado .canal-note {
+  color: #ffffffcc;
+}
+
+.canal-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 8px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: #5f6368;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.canal-copy svg {
+  width: 15px;
+  height: 15px;
+}
+
+.canal-copy:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: #eef4fb;
+}
+
+.canal-copy:active {
+  transform: scale(.94);
+}
+
+.canal-copy-status {
+  margin: 0;
+  min-height: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* Formulario de contacto: dos columnas (datos + formulario) */
+
+.contacto-form {
+  background: var(--soft);
+}
+
+.contacto-form-grid {
+  display: grid;
+  grid-template-columns: .82fr 1.18fr;
+  gap: 75px;
+  align-items: start;
+}
+
+.contacto-form-copy .form-title {
+  margin: 12px 0 16px;
+}
+
+.form-sub {
+  margin: 0 0 8px;
+  color: #6f6f6f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.form-sub a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+#formulario {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 1080px) {
+  .canales-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .canal--destacado {
+    transform: none;
+  }
+
+  .contacto-form-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aire-desc-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .pilares-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .closing-inner {
+    gap: 24px;
+  }
+
+  .closing-actions,
+  .closing-actions .btn {
+    width: 100%;
+  }
+
+  .canales-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-form-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .pilares-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marcas-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
   }
 }
 
