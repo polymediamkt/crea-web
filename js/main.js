@@ -88,7 +88,8 @@
   var SECTORES = {
     residencial: 'Residencial',
     comercial: 'Comercial',
-    industrial: 'Industrial'
+    industrial: 'Industrial',
+    hotelero: 'Hotelero'
   };
 
   // URL de una página interna relativa a la raíz del sitio. Sirve tanto en
