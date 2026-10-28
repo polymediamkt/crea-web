@@ -25,6 +25,10 @@ index.qa.bak
 # Maqueta de referencia visual. No es parte del sitio.
 REFERENCIAS/
 
+# Herramientas locales de agentes (skill Impeccable y su lockfile).
+.agents/
+skills-lock.json
+
 # Sistema operativo y editores
 .DS_Store
 Thumbs.db
