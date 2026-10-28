@@ -45,6 +45,7 @@ La composición de cada sección es libre: usa estos activos para armar la estru
 5. **Proceso "Cómo trabajamos":** 4 pasos: Consulta → Proyecto → Ejecución → Entrega, con una línea por paso. Redáctalos de forma genérica y márcalos para validar con CREA.
 6. **Proyectos destacados:** 4 tarjetas + botón "Ver más proyectos" (ver detalle abajo).
 7. **Nosotros:** quiénes son y por qué CREA: diseño y construcción integrados bajo un mismo equipo. Sin inventar historia, años ni equipo: usa `[POR CONFIRMAR]` donde falten datos.
+7b. **Preguntas frecuentes (id="faq", entre Nosotros y la banda de cierre):** eyebrow "06 — Preguntas frecuentes"; título "Preguntas frecuentes antes de cotizar."; 12 preguntas en acordeón nativo (`<details>/<summary>`, sin JS) con círculo numerado, pregunta en H3 y respuesta de 40–110 palabras. Objetivo SEO y GEO: preguntas en el lenguaje de búsqueda real, respuestas directas y autónomas (que se entiendan fuera de contexto), sin enlaces internos dentro de las respuestas salvo la de aire acondicionado, para que el schema coincida con el texto visible. Cierra con el botón "Cotiza tu proyecto →" a `contacto/` (evento `cta_ir_a_contacto`, posición `faq`). Cada `<details>` emite `faq_abrir` con posición `faq-01`…`faq-12`. Incluye schema `FAQPage` cuyo texto debe repetir exactamente el visible. **Pendiente de CREA:** (a) los rangos de $12,000–$24,000 MXN/m² y los plazos de 8–14 meses + 2–4 de proyecto y trámites son referencias del mercado local 2026, no tarifas propias; (b) la pregunta "¿tramitan permisos y licencias?" (consulta frecuente del sector) queda fuera hasta confirmarla.
 8. **Testimonios:** solo si CREA proporciona material real. Si no, omitir la sección.
 9. **Banda de cierre:** reemplaza a la antigua sección de Contacto del inicio. Título corto, una línea de apoyo y botón **"Contáctanos →"** que lleva a la página de contacto.
 10. **Footer:** dos niveles. Arriba, rejilla de 4 columnas: marca con eslogan y CTA de WhatsApp, **Servicios**, **Arquitectos** (Eivar Alonso Trejo García, Arquitecto principal; Roberto Arroyo, Supervisión arquitectónica) y **Contacto** con horario e íconos de WhatsApp y Facebook. Debajo, barra inferior con `© 2026 CREA — Construcción · Arquitectura · Diseño`, `Cancún, Quintana Roo`, aviso de privacidad y el crédito "Designed by Polymedia Creative Agency" (texto, sin enlace).
@@ -81,9 +82,10 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 - **Carrusel de marcas** justo debajo del hero: LG, Mirage, York, Whirlpool y Mabe (orden fijo; "Whirlpool" se escribe con "l" aunque el archivo local sea `Whirpool.svg`). Reutiliza el componente `[data-marquee]` (mismo que la barra de clientes del inicio), con `aria-hidden` en el grupo clonado y controles pause/prev/next. Nota visible "Las marcas y logotipos pertenecen a sus respectivos propietarios."
 - **Paquete básico de instalación:** tarjeta azul con lista (instalación por instaladores calificados, póliza de mantenimiento a 12 meses, garantía) y botón "Cotizar paquete básico →" a `contacto/?servicio=aire-acondicionado&paquete=basico` (evento `aire_paquete`). Marcador `[POR CONFIRMAR]` — alcance del paquete (materiales, tubería, qué no incluye), duración/cobertura de la garantía y qué cubre la póliza.
 - **Tres pilares** ("Lo que obtienes"): póliza de mantenimiento a 12 meses, garantía e instaladores calificados, con ícono outline azul.
+- **Preguntas frecuentes (id="faq"):** 6 preguntas propias del servicio en el mismo componente de acordeón del inicio (costo, paquete básico, garantía, marcas, cobertura y cómo cotizar), con schema `FAQPage` independiente. Sin precios fijos ni detalle del paquete o la garantía hasta que CREA confirme su alcance. Cierra con "¿Otra duda? Escríbenos →" a `../contacto/?servicio=aire-acondicionado` (evento `aire_faq`); no repite el "Cotizar instalación →" de la banda de cierre que va justo después.
 - **Banda de cierre** azul con botón "Cotizar instalación →".
 - JSON-LD `Service` (serviceType "Instalación de aire acondicionado") con `provider` `LocalBusiness`/`GeneralContractor` (Cancún, Quintana Roo).
-- Eventos: `aire_hero`, `aire_paquete`, `aire_cierre` y `ver_aire_acondicionado` (tarjeta de Servicios del inicio).
+- Eventos: `aire_hero`, `aire_paquete`, `aire_cierre`, `aire_faq` (cada pregunta y el CTA del FAQ) y `ver_aire_acondicionado` (tarjeta de Servicios del inicio).
 
 ### Formulario
 - Campos: nombre (obligatorio), **correo (obligatorio**, es la vía alterna), teléfono (opcional), tipo de proyecto (select: Construcción, Mantenimiento, Aire acondicionado (instalación), Arquitectura, Diseño, Otro), mensaje y casilla de privacidad con enlace al aviso.
@@ -91,7 +93,7 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 - Destino: `info@creaqr.mx`. Necesita un servicio externo o función serverless (Formspree, Web3Forms, Resend u otro): **pregunta cuál usar (depende del hosting) y no simules el envío**.
 
 ### Medición
-- Inicio: evento `cta_ir_a_contacto` con `posicion`, `destino` y `servicio` (parseado del `href`) en cada CTA de cotizar. El CTA de la sección Mantenimiento emite además `mantenimiento_seccion_principal` y el de la banda de pólizas `mantenimiento_banner` (se admiten varios eventos por clic en `data-track`). Las tarjetas de sector emiten `cta_ir_a_contacto` con posición `sector-residencial|comercial|industrial|hotelero`.
+- Inicio: evento `cta_ir_a_contacto` con `posicion`, `destino` y `servicio` (parseado del `href`) en cada CTA de cotizar. El CTA de la sección Mantenimiento emite además `mantenimiento_seccion_principal` y el de la banda de pólizas `mantenimiento_banner` (se admiten varios eventos por clic en `data-track`). Las tarjetas de sector emiten `cta_ir_a_contacto` con posición `sector-residencial|comercial|industrial|hotelero`. El FAQ emite `faq_abrir` por pregunta (`faq-01`…`faq-12`).
 - Contacto: `contacto_whatsapp`, `contacto_llamar`, `contacto_correo`, `contacto_correo_copiar` y `contacto_formulario_enviado`.
 - El botón flotante y la barra móvil mantienen sus eventos de WhatsApp directo.
 - Conserva UTM y `fbclid` en `sessionStorage` para no perderlos al navegar a `contacto/`; van como campos ocultos del formulario y en los eventos.
@@ -148,6 +150,9 @@ Cuando falte un dato (teléfono de llamadas distinto del WhatsApp, dirección, r
 - Horario de atención publicado: "Lunes a viernes, 9 a.m. a 6 p.m."
 - Confirmar nombres y ubicación de las obras destacadas (alberca en azotea, gradas de estadio, terraza con escultura y cancha). La cancha está en proceso de obra y la sección dice "Obra terminada, no promesas.": decidir si se mantiene, se rotula o se ajusta el copy.
 - Qué incluyen las pólizas de mantenimiento, tiempos de respuesta y cobertura.
+- **Rangos del FAQ:** confirmar (o corregir) los $12,000–$24,000 MXN/m² y los plazos de 8–14 meses de obra + 2–4 de proyecto y trámites. Hoy son referencias del mercado local 2026, no tarifas propias. Si CREA tiene sus propias cifras, sustituirlas en el texto visible y en el schema `FAQPage`.
+- **Permisos:** confirmar si CREA tramita licencias, DRO, CFE y conexiones. Es la consulta frecuente del sector que falta en el FAQ del inicio.
+- **Paquete de aire y garantía:** confirmar alcance, duración y cobertura para cerrar las respuestas 02 y 03 del FAQ de aire acondicionado.
 - Redacción y aprobación legal del aviso de privacidad (hoy es un texto de trabajo).
 - Aprobar los tokens `--blue-cta` y `--blue-ink` (ver `cambio-05-mejora-conversion.md`).
 

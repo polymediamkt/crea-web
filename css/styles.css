@@ -2267,6 +2267,156 @@ footer {
   flex: 0 0 auto;
 }
 
+/* ---------- 17d. Preguntas frecuentes (inicio y aire acondicionado) ---------- */
+
+.faq {
+  background: var(--soft);
+}
+
+.faq-inner {
+  display: grid;
+  grid-template-columns: .85fr 1.5fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.faq-head h2 {
+  font-size: clamp(38px, 4.4vw, 58px);
+  margin: 12px 0 0;
+}
+
+.faq-lead {
+  margin: 16px 0 0;
+  max-width: 360px;
+  color: #5f5f5f;
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--rs);
+  transition: border-color .2s ease;
+}
+
+.faq-item:hover {
+  border-color: #b9d9f5;
+}
+
+.faq-item[open] {
+  border-color: var(--blue);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 60px;
+  padding: 16px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: var(--rs);
+}
+
+.faq-num {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  color: var(--blue-ink);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.faq-q {
+  flex: 1;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--black);
+}
+
+.faq-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--blue-ink);
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::before {
+  width: 14px;
+  height: 2px;
+}
+
+.faq-icon::after {
+  width: 2px;
+  height: 14px;
+  transition: transform .2s ease;
+}
+
+.faq-item[open] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-body {
+  padding: 0 22px 22px 74px;
+}
+
+.faq-body p {
+  margin: 0;
+  max-width: 66ch;
+  color: #4a4a4a;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.faq-body a {
+  color: var(--blue-ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.faq-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 /* ---------- 17c-bis. Página de aire acondicionado ---------- */
 
 /* El hero reutiliza la foto (no el video): sin duotono y con la imagen
@@ -2660,6 +2810,15 @@ footer {
   .pilares-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .faq-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .faq-lead {
+    max-width: 520px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -2689,6 +2848,34 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
+  }
+
+  .faq-head h2 {
+    font-size: clamp(34px, 8.4vw, 44px);
+  }
+
+  .faq-item summary {
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .faq-num {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+  }
+
+  .faq-q {
+    font-size: 15px;
+  }
+
+  .faq-body {
+    padding: 0 16px 20px;
+  }
+
+  .faq-cta,
+  .faq-cta .btn {
+    width: 100%;
   }
 }
 
