@@ -24,7 +24,7 @@ Decisiones tomadas con CREA:
 
 ### Confianza
 - **Footer (3 páginas):** columna "Arquitectos" con **Eivar Alonso Trejo García — Arquitecto principal** y **Roberto Arroyo — Supervisión arquitectónica**. Sin placeholders.
-- **Portafolio:** sin pill negro sobre las fotos ni caption en el visor. `alt` descriptivo por foto (17), distinguiendo renders de fotos de obra.
+- **Portafolio:** sin pill negro sobre las fotos ni caption en el visor. `alt` descriptivo por foto. Se retiraron los dos renders (`crea-project-08` y `crea-project-12`) del arreglo y del disco; la galería queda en 15 fotos (4 destacadas + 11).
 - **Notas internas** de Proyectos, Mantenimiento, Nosotros, paquete de aire y aviso de privacidad: movidas a comentarios HTML.
 - **Contacto:** se retira la nota del teléfono de llamadas y el marcador del horario.
 
@@ -40,7 +40,7 @@ Los tokens `--blue-cta` y `--blue-ink` cambian el tono de los botones y del text
 
 ## Checklist de pendientes para CREA
 - **P0 legal:** el aviso de privacidad sigue siendo un texto de trabajo; debe redactarlo y aprobarlo CREA o su asesoría legal (ver comentario en `privacidad.html`).
-- **P0 confianza:** de las 4 fotos destacadas, dos son **renders** (fachada e interior del restaurante) y una es obra en proceso. La sección dice "Obra terminada, no promesas." Decidir: reemplazar por fotos de obra terminada, rotular los renders o ajustar el copy.
+- **P0 confianza (resuelto):** se retiraron del portafolio los dos renders (fachada e interior del restaurante) y se borraron sus archivos. La selección destacada queda en: alberca en azotea (grande), gradas de estadio, terraza con escultura y cancha en proceso. Queda como P1 confirmar nombre y ubicación de las obras y decidir si la cancha (obra en proceso) se mantiene bajo el título "Obra terminada, no promesas."
 - **P1 horario:** "Lunes a viernes, 9 a.m. a 6 p.m." se publica como dato confirmado en el footer y en contacto. Confirmarlo o cambiarlo.
 - **P1 pólizas:** qué incluyen, tiempos de respuesta y cobertura.
 - **P1 proyectos:** nombre, ubicación y tipo de cada obra (hoy sin caption, listo para reactivarse con `PROYECTO_PIE` en `js/main.js`).

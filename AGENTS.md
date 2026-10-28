@@ -54,7 +54,7 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 ### Proyectos destacados
 - **4 tarjetas** en una rejilla con jerarquía (una grande y tres menores), más un botón **"Ver más proyectos"** centrado debajo.
 - Los captions de nombre/ubicación/tipo se muestran solo cuando estén confirmados (`PROYECTO_PIE` vacío en `js/main.js`). Mientras tanto no se pinta ningún marcador sobre la foto.
-- El botón despliega las fotos restantes (13) en el mismo estilo de tarjetas y cambia a "Ver menos".
+- El botón despliega las fotos restantes (11) en el mismo estilo de tarjetas y cambia a "Ver menos".
 - Cada imagen abre un **visor a pantalla completa**: botón de cerrar, flechas, teclado (Esc, ← y →), foco atrapado dentro del visor y `alt` descriptivo.
 - **Las 4 destacadas las eliges tú.** Criterio: variedad de tipologías, buena calidad, luz y composición; evita capturas de WhatsApp o fotos de baja resolución; la tarjeta grande debe ser la mejor foto horizontal. Define la lista en un solo lugar (un arreglo o archivo de datos) para cambiarla fácil, y dime cuáles elegiste y por qué.
 - La galería usa `loading="lazy"`.
@@ -146,7 +146,7 @@ Cuando falte un dato (teléfono de llamadas distinto del WhatsApp, dirección, r
 - Validar el proceso de 4 pasos y los beneficios de cada servicio.
 - Dónde se alojará el sitio (hosting); afecta al servicio del formulario.
 - Horario de atención publicado: "Lunes a viernes, 9 a.m. a 6 p.m."
-- De las 4 fotos destacadas, dos son renders de presentación y una es obra en proceso; decidir si se rotulan, se reemplazan por obra terminada o se ajusta el copy "Obra terminada, no promesas."
+- Confirmar nombres y ubicación de las obras destacadas (alberca en azotea, gradas de estadio, terraza con escultura y cancha). La cancha está en proceso de obra y la sección dice "Obra terminada, no promesas.": decidir si se mantiene, se rotula o se ajusta el copy.
 - Qué incluyen las pólizas de mantenimiento, tiempos de respuesta y cobertura.
 - Redacción y aprobación legal del aviso de privacidad (hoy es un texto de trabajo).
 - Aprobar los tokens `--blue-cta` y `--blue-ink` (ver `cambio-05-mejora-conversion.md`).

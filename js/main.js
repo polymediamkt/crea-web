@@ -183,11 +183,12 @@
      ------------------------------------------------------------------ */
 
   var PROYECTOS = [
-    { base: 'crea-project-08', full: 'crea-project-08-1200.webp', anchos: [480, 768, 1200], w: 1599, h: 926, destacada: true, perfil: 'grande', alt: 'Render de la fachada de un restaurante de dos niveles con acabados en piedra y detalles en azul.' },
-    { base: 'crea-project-12', full: 'crea-project-12-1600.webp', anchos: [480, 768, 1600], w: 1600, h: 947, destacada: true, perfil: 'par', alt: 'Render del interior de un restaurante con barra, cocina a la vista, mezzanine y mobiliario en tonos azules.' },
-    { base: 'img_2810', full: 'img_2810-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Terraza de azotea con alberca, camastros verdes y piso de madera, con vista a la ciudad.' },
+    { base: 'img_2823', full: 'img_2823-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'grande', alt: 'Alberca en azotea con camastros verdes y piso de madera, con vista a la ciudad de Cancún.' },
+    { base: 'anahuac', full: 'anahuac-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Gradas de estadio con techumbre tensada blanca y detalles naranjas junto a la cancha.' },
+    { base: 'img_e2805', full: 'img_e2805-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Terraza techada con escultura de red en forma de pez, muro estampado y vista a la ciudad.' },
     { base: 'crea-project-13', full: 'crea-project-13-1200.webp', anchos: [480, 768, 1200], w: 1599, h: 1186, destacada: true, perfil: 'ancho', alt: 'Cancha de fútbol con techumbre tensada blanca y estructura naranja, en proceso de obra.' },
 
+    { base: 'img_2810', full: 'img_2810-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, alt: 'Terraza de azotea con alberca, camastros verdes y piso de madera, con vista a la ciudad.' },
     { base: 'crea-project-01', full: 'crea-project-01-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 1600, alt: 'Excavadora sobre terreno rocoso durante los trabajos de excavación, con vegetación al fondo.' },
     { base: 'crea-project-02', full: 'crea-project-02-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 1600, alt: 'Excavadora junto a un montículo de roca en una obra, con cielo despejado.' },
     { base: 'crea-project-03', full: 'crea-project-03-1200.webp', anchos: [480, 768, 1200], w: 1300, h: 1600, alt: 'Retroexcavadora nivelando terreno en una obra, con trabajadores al fondo.' },
@@ -197,10 +198,7 @@
     { base: 'crea-project-07', full: 'crea-project-07-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Muros de tablaroca con estructura metálica e instalación hidrosanitaria en un interior en obra.' },
     { base: 'crea-project-09', full: 'crea-project-09-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Interior en obra con muros de tablaroca, aberturas y materiales de instalación.' },
     { base: 'crea-project-10', full: 'crea-project-10-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Terraza en obra con columnas de acero, celosía de ladrillo y escalones de madera.' },
-    { base: 'crea-project-11', full: 'crea-project-11-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Escalones de madera entre muros de ladrillo y concreto en una terraza en obra.' },
-    { base: 'img_2823', full: 'img_2823-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, alt: 'Alberca en azotea con camastros verdes y piso de madera, con vista a la ciudad de Cancún.' },
-    { base: 'img_e2805', full: 'img_e2805-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, alt: 'Terraza techada con escultura de red en forma de pez, muro estampado y vista a la ciudad.' },
-    { base: 'anahuac', full: 'anahuac-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, alt: 'Gradas de estadio con techumbre tensada blanca y detalles naranjas junto a la cancha.' }
+    { base: 'crea-project-11', full: 'crea-project-11-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Escalones de madera entre muros de ladrillo y concreto en una terraza en obra.' }
   ];
 
   var OBRA_DIR = 'assets/img/obra/';

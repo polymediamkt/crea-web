@@ -16,9 +16,6 @@ assets/img/stock/alt-proceso-arquitectos-*.webp
 # Fotos de servicio del sitio anterior.
 assets/img/proyectos/service-*.webp
 
-# Variante de ancho que el arreglo PROYECTOS de js/main.js no pide.
-assets/img/obra/crea-project-12-1200.webp
-
 # Copia de seguridad de una version previa de index.html.
 index.qa.bak
 
