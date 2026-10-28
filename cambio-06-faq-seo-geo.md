@@ -26,6 +26,10 @@ Captar búsquedas informacionales y de intención comercial ("cuánto cuesta con
 - CTA **"¿Otra duda? Escríbenos →"** a `../contacto/?servicio=aire-acondicionado` (evento `aire_faq`). Se evita repetir el "Cotizar instalación →" de la banda de cierre que va inmediatamente después.
 - Schema **`FAQPage`** independiente; texto idéntico al visible (verificado).
 
+### Header (4 páginas)
+- **"FAQ" en el menú**, antes de "Contacto": en el inicio y en la página de aire salta a su propia sección (`#faq`); en contacto y privacidad va a `../index.html#faq`.
+- Con 7 ítems el menú de escritorio desbordaba entre 801 y 1120px, así que el colapso a hamburguesa pasó de 800px a **1120px** (se movieron solo las reglas del header; la retícula del resto sigue igual).
+
 ### Estilos (`css/styles.css`)
 - Bloque **17d** reutilizable por ambas páginas: fondo `--soft`, rejilla de dos columnas (título/lead a la izquierda, acordeón a la derecha), tarjetas blancas con borde `--line` y radio `--rs`, borde azul al abrir, ícono +/− con transición, `focus-visible` claro y respuestas a 66ch.
 - Responsive: una columna a ≤1080px; en móvil el cuerpo de la respuesta pierde la sangría y el CTA ocupa el ancho completo.
@@ -50,7 +54,8 @@ Captar búsquedas informacionales y de intención comercial ("cuánto cuesta con
 - Render a 1440px y 390px en ambas páginas: `scrollWidth === viewport`, sin desbordes (los únicos "offenders" son los carruseles, que desbordan a propósito).
 - Acordeón probado: abre/cierra con clic y teclado, borde azul en abierto, ícono +/− correcto.
 - Contraste: respuestas `#4a4a4a` sobre blanco (≈8.7:1) y lead `#5f5f5f` sobre `--soft` (≈5.9:1), AA.
-- Enlaces internos nuevos (aire → `../contacto/?servicio=aire-acondicionado`, inicio → `contacto/` y página de aire) verificados.
+- Enlaces internos nuevos (aire → `../contacto/?servicio=aire-acondicionado`, inicio → `contacto/` y página de aire, FAQ del header en las 4 páginas) verificados.
+- Header: sin desborde a 1440, 1200 y 1121px; hamburguesa desde 1120px; el menú abre con los 7 ítems y el enlace FAQ deja la sección visible bajo el header fijo.
 
 ## Rollback
 - `git revert <commit>` de este cambio, o `git checkout capa-3-accesibilidad -- index.html css/styles.css instalacion-aire-acondicionado-cancun/index.html` para volver al estado previo al FAQ (conserva los cambios posteriores de portafolio en `js/main.js`, que este cambio no toca).

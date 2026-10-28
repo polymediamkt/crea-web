@@ -1920,15 +1920,9 @@ footer {
   }
 }
 
-@media (max-width: 800px) {
-  html {
-    scroll-padding-top: 96px;
-  }
-
-  .container {
-    width: calc(100% - 32px);
-  }
-
+/* El menú de escritorio deja de caber con 7 ítems por debajo de ~1120px:
+   pasa a hamburguesa antes de desbordar, sin tocar la retícula del resto. */
+@media (max-width: 1120px) {
   .navlinks {
     position: absolute;
     top: 100%;
@@ -1971,6 +1965,16 @@ footer {
   .nav {
     padding: 0 10px 0 14px;
     gap: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    scroll-padding-top: 96px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
   }
 
   .logo img {
