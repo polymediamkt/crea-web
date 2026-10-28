@@ -10,6 +10,11 @@
 
 :root {
   --blue: #0088ff;
+  /* Variantes de --blue para cumplir AA sin tocar el azul de marca.
+     Pendientes de aprobación de CREA (ver cambio-05):
+     --blue-cta con texto blanco = 4.97:1 · --blue-ink sobre blanco = 5.5:1 */
+  --blue-cta: #0070d0;
+  --blue-ink: #0066c4;
   --black: #191919;
   --soft: #f3f4f5;
   --line: #ddd;
@@ -95,7 +100,7 @@ img {
   font-weight: 800;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--blue-ink);
 }
 
 .section-note {
@@ -131,7 +136,7 @@ img {
 }
 
 .blue {
-  background: var(--blue);
+  background: var(--blue-cta);
   color: #fff;
 }
 
@@ -220,9 +225,9 @@ header {
   min-height: 44px;
   padding: 0 16px;
   border-radius: 999px;
-  background: var(--blue);
+  background: var(--blue-cta);
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .05em;
@@ -405,7 +410,7 @@ header {
   max-width: 480px;
   line-height: 1.6;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .actions {
@@ -620,7 +625,7 @@ header {
   align-items: center;
   min-height: 44px;
   margin-top: 14px;
-  color: var(--blue);
+  color: var(--blue-ink);
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
@@ -807,11 +812,13 @@ header {
 
 .card--featured .card-benefit {
   color: #fff;
+  font-weight: 700;
   border-bottom-color: rgba(255,255,255,.35);
 }
 
 .card--featured ul {
   color: #fff;
+  font-weight: 700;
 }
 
 .card--featured li {
@@ -910,7 +917,7 @@ header {
   align-self: flex-start;
   min-height: 44px;
   margin-top: 22px;
-  color: var(--blue);
+  color: var(--blue-ink);
   font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
@@ -1189,7 +1196,7 @@ header {
 
 .point-num {
   border: 1px solid var(--blue);
-  color: var(--blue);
+  color: var(--blue-ink);
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -1216,37 +1223,6 @@ header {
 
 /* ---------- 11. Contacto ---------- */
 
-.contact {
-  background: var(--soft);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: .82fr 1.18fr;
-  gap: 75px;
-  align-items: start;
-}
-
-.contact h2 {
-  font-size: clamp(44px, 5vw, 66px);
-  margin: 12px 0 18px;
-}
-
-.contact-copy p {
-  color: #6d6d6d;
-  font-size: 15px;
-  line-height: 1.7;
-  max-width: 420px;
-  margin: 0;
-}
-
-.contact-cta {
-  margin-top: 26px;
-  min-height: 56px;
-  padding: 16px 30px;
-  font-size: 15px;
-}
-
 .contact-data {
   list-style: none;
   margin: 36px 0 0;
@@ -1272,7 +1248,7 @@ header {
   font-weight: 800;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #888;
+  color: #6f6f6f;
 }
 
 .contact-data a {
@@ -1390,7 +1366,7 @@ header {
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #9a9a9a;
+  color: #767676;
 }
 
 .field input:focus,
@@ -1450,7 +1426,7 @@ header {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: var(--blue);
+  color: var(--blue-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-size: 13px;
@@ -1607,11 +1583,11 @@ footer {
 .foot-role {
   min-height: 0;
   font-size: 13px;
-  color: #7e7e7e;
+  color: #9a9a9a;
 }
 
 .foot-muted {
-  color: #7e7e7e;
+  color: #9a9a9a;
 }
 
 .foot-hours {
@@ -1685,7 +1661,7 @@ footer {
 .foot-copy {
   margin: 0;
   font-size: 13px;
-  color: #7e7e7e;
+  color: #9a9a9a;
 }
 
 .foot-legal {
@@ -1704,9 +1680,9 @@ footer {
 
 .foot-credit {
   margin: 0 0 0 auto;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .04em;
-  color: #6d6d6d;
+  color: #9a9a9a;
 }
 
 .foot-credit strong {
@@ -1742,7 +1718,7 @@ footer {
 }
 
 .legal-copy a {
-  color: var(--blue);
+  color: var(--blue-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 700;
@@ -1767,7 +1743,7 @@ footer {
   min-height: 54px;
   align-items: center;
   justify-content: center;
-  background: var(--blue);
+  background: var(--blue-cta);
   color: #fff;
   border-radius: 999px;
   text-align: center;
@@ -1790,7 +1766,7 @@ footer {
   min-height: 58px;
   padding: 0 24px;
   border-radius: 999px;
-  background: var(--blue);
+  background: var(--blue-cta);
   color: #fff;
   font-size: 14px;
   font-weight: 800;
@@ -1800,7 +1776,7 @@ footer {
 }
 
 .wa-float:hover {
-  background: #0077e0;
+  background: #0062b8;
 }
 
 /* ---------- 16. Visor de fotos ---------- */
@@ -1946,7 +1922,7 @@ footer {
 
 @media (max-width: 800px) {
   html {
-    scroll-padding-top: 88px;
+    scroll-padding-top: 96px;
   }
 
   .container {
@@ -2085,7 +2061,6 @@ footer {
   .cards,
   .proceso-grid,
   .about,
-  .contact-grid,
   .sectores-grid,
   .legal-grid {
     grid-template-columns: 1fr;
@@ -2158,14 +2133,6 @@ footer {
 
   .about-copy {
     padding: 26px;
-  }
-
-  .contact h2 {
-    font-size: clamp(38px, 10vw, 50px);
-  }
-
-  .contact-cta {
-    width: 100%;
   }
 
   .form-wrap {
@@ -2292,7 +2259,7 @@ footer {
   margin: 14px 0 0;
   max-width: 560px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.7;
 }
 
@@ -2333,7 +2300,7 @@ footer {
 .paquete-sub {
   margin: 16px 0 0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.7;
   max-width: 520px;
 }
@@ -2371,9 +2338,10 @@ footer {
 
 .paquete-note {
   margin: 22px 0 0;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1.6;
-  color: #ffffffd9;
+  color: #fff;
   max-width: 620px;
 }
 
@@ -2437,7 +2405,7 @@ footer {
 .marcas-note {
   margin: 22px auto 0;
   font-size: 12px;
-  color: #777;
+  color: #6f6f6f;
   text-align: center;
 }
 
@@ -2473,7 +2441,7 @@ footer {
   padding: 6px 16px;
   border-radius: 999px;
   background: #e6f2ff;
-  color: var(--blue);
+  color: var(--blue-ink);
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .06em;
@@ -2524,7 +2492,7 @@ footer {
   padding: 4px 12px;
   border-radius: 999px;
   background: #fff;
-  color: var(--blue);
+  color: var(--blue-ink);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .08em;
@@ -2569,6 +2537,7 @@ footer {
 
 .canal--destacado .canal-text {
   color: #fff;
+  font-weight: 700;
 }
 
 .canal-btn {
@@ -2594,7 +2563,7 @@ footer {
   margin: 0;
   font-size: 12px;
   font-weight: 600;
-  color: #8a8a8a;
+  color: #6f6f6f;
 }
 
 .canal--destacado .canal-note {
@@ -2605,8 +2574,8 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   margin-left: 8px;
   padding: 0;
   border: 1px solid var(--line);
@@ -2625,7 +2594,7 @@ footer {
 
 .canal-copy:hover {
   border-color: var(--blue);
-  color: var(--blue);
+  color: var(--blue-ink);
   background: #eef4fb;
 }
 
@@ -2638,7 +2607,7 @@ footer {
   min-height: 18px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--blue-ink);
 }
 
 /* Formulario de contacto: dos columnas (datos + formulario) */
@@ -2666,7 +2635,7 @@ footer {
 }
 
 .form-sub a {
-  color: var(--blue);
+  color: var(--blue-ink);
   font-weight: 700;
 }
 
@@ -2686,11 +2655,6 @@ footer {
   .contacto-form-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-
-  .aire-desc-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
   }
 
   .pilares-grid {

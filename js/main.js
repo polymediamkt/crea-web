@@ -428,11 +428,24 @@
 
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', function () {
-      setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+      var open = navToggle.getAttribute('aria-expanded') !== 'true';
+      setMenu(open);
+      // El foco entra al panel: en el DOM los enlaces van antes que el botón,
+      // así que sin esto Tab saldría al contenido y el menú quedaría inalcanzable.
+      if (open) {
+        var first = navLinks.querySelector('a');
+        if (first) first.focus();
+      }
     });
 
     navLinks.addEventListener('click', function (ev) {
       if (ev.target.closest('a')) setMenu(false);
+    });
+
+    // Cerrar al tocar fuera del header.
+    document.addEventListener('click', function (ev) {
+      if (navToggle.getAttribute('aria-expanded') !== 'true') return;
+      if (!ev.target.closest('header')) setMenu(false);
     });
 
     document.addEventListener('keydown', function (ev) {
@@ -449,7 +462,6 @@
   }
 
   /* ------------------------------------------------------------------
-/* ------------------------------------------------------------------
      2b. Banda de logos — carrusel infinito horizontal
      ------------------------------------------------------------------ */
 
@@ -680,10 +692,12 @@
       userPaused = paused;
       if (paused) {
         video.pause();
-      } else if (!reduceQuery.matches) {
+      } else {
+        // Reproducción pedida por el usuario: permitida incluso con
+        // prefers-reduced-motion (la prohibición aplica al autoplay).
         video.play().catch(function () {});
       }
-      syncBtn(paused);
+      syncBtn(video.paused);
       if (typeof track === 'function') {
         track(paused ? 'hero_video_pause' : 'hero_video_play');
       }
@@ -951,7 +965,7 @@
         })
         .then(function (r) {
           if (r.ok && r.json && r.json.success) {
-            track('form_submit', { tipo: form.tipo_proyecto.value, canal: 'contacto_formulario' });
+            track('contacto_formulario_enviado', { tipo: form.tipo_proyecto.value, canal: 'contacto_formulario' });
             setStatus('Gracias, ' + nombre.value.trim() + '. Tu mensaje llegó a nuestro correo: te respondemos a ' + correo.value.trim() + '.', 'ok');
             form.reset();
             form.querySelectorAll('[data-utm]').forEach(function (i) { i.value = ATTR[i.getAttribute('data-utm')] || ''; });
