@@ -284,9 +284,24 @@
   document.addEventListener('click', function (ev) {
     var el = ev.target.closest('[data-track]');
     if (!el) return;
-    track(el.getAttribute('data-track'), {
+    var href = el.getAttribute('href') || null;
+
+    // El servicio viaja en el propio enlace (?servicio=...). Se envía como
+    // propiedad del evento para no depender de parsear `destino` en el CRM.
+    var servicio = null;
+    if (href && href.indexOf('?') > -1) {
+      servicio = new URLSearchParams(href.slice(href.indexOf('?'))).get('servicio');
+    }
+
+    var payload = {
       posicion: el.getAttribute('data-track-pos') || null,
-      destino: el.getAttribute('href') || null
+      destino: href,
+      servicio: servicio
+    };
+
+    // data-track admite varios eventos separados por espacios.
+    el.getAttribute('data-track').split(/\s+/).forEach(function (name) {
+      if (name) track(name, payload);
     });
   });
 
@@ -338,11 +353,14 @@
       a.setAttribute('href', mailHref);
     });
 
-    // Preselecciona el tipo de proyecto del formulario.
+    // Preselecciona el tipo de proyecto del formulario. La comparación tolera
+    // etiquetas más largas ("Aire acondicionado" -> "Aire acondicionado (instalación)").
     var select = root.querySelector('#f-tipo');
     if (select && cfg.servicio) {
+      var wanted = cfg.servicio.toLowerCase();
       Array.prototype.forEach.call(select.options, function (opt) {
-        if (opt.value === cfg.servicio) select.value = cfg.servicio;
+        var value = opt.value.toLowerCase();
+        if (value === wanted || value.indexOf(wanted) === 0) select.value = opt.value;
       });
     }
 

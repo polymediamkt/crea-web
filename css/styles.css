@@ -606,6 +606,25 @@ header {
   border: 1px solid var(--line);
   border-radius: var(--r);
   padding: 30px;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.sector-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .35);
+}
+
+.sector-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 14px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
 }
 
 .sector-icon {
@@ -650,7 +669,7 @@ header {
 .sectores-cta {
   display: flex;
   justify-content: center;
-  margin: 0 0 44px;
+  margin: 0 0 64px;
 }
 
 .mantenimiento-areas {
@@ -2426,17 +2445,17 @@ footer {
 
 .contacto-hero {
   background: #fff;
-  padding-bottom: 40px;
+  padding-bottom: 24px;
 }
 
 .contacto-hero .display {
-  font-size: clamp(46px, 7vw, 92px);
+  font-size: clamp(40px, 6vw, 76px);
   margin: 12px 0 0;
   max-width: 900px;
 }
 
 .contacto-lead {
-  margin: 18px 0 0;
+  margin: 14px 0 0;
   max-width: 520px;
   color: #666;
   font-size: 16px;
@@ -2463,7 +2482,7 @@ footer {
 
 .contacto-canales {
   background: var(--soft);
-  padding-top: 60px;
+  padding-top: 24px;
 }
 
 .contacto-h2 {
