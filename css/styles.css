@@ -734,13 +734,20 @@ header {
   line-height: 1.6;
 }
 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+
+/* 5 tarjetas: 3 arriba y 2 abajo, centradas. Va despues de .cards para que
+   su columnas ganen (misma especificidad). */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 13px;
 }
 
-/* 5 tarjetas: 3 arriba y 2 abajo, centradas. */
 .services-grid > .card {
   grid-column: span 2;
 }
@@ -751,12 +758,6 @@ header {
 
 .services-grid > .card:nth-child(5) {
   grid-column: 4 / span 2;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 13px;
 }
 
 .card {
@@ -1910,6 +1911,16 @@ footer {
   .sectores-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid > .card,
+  .services-grid > .card:nth-child(4),
+  .services-grid > .card:nth-child(5) {
+    grid-column: auto;
+  }
 }
 
 @media (max-width: 800px) {
@@ -2057,6 +2068,12 @@ footer {
   .sectores-grid,
   .legal-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid > .card,
+  .services-grid > .card:nth-child(4),
+  .services-grid > .card:nth-child(5) {
+    grid-column: auto;
   }
 
   .sectores-grid {
