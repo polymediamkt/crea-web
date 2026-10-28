@@ -194,7 +194,6 @@
     { base: 'crea-project-03', full: 'crea-project-03-1200.webp', anchos: [480, 768, 1200], w: 1300, h: 1600, alt: 'Retroexcavadora nivelando terreno en una obra, con trabajadores al fondo.' },
     { base: 'crea-project-04', full: 'crea-project-04-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Interior en obra con muros de ladrillo, losa de concreto e instalaciones a la vista, con la ciudad al fondo.' },
     { base: 'crea-project-05', full: 'crea-project-05-1600.webp', anchos: [480, 768, 1200, 1600], w: 1600, h: 1200, alt: 'Cancha de fútbol con techumbre tensada blanca y arcos naranjas, gradas y pasto sintético.' },
-    { base: 'crea-project-06', full: 'crea-project-06-1600.webp', anchos: [480, 768, 1200, 1600], w: 1600, h: 942, alt: 'Render del interior de un restaurante con barra, cocina y vista a la calle.' },
     { base: 'crea-project-07', full: 'crea-project-07-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Muros de tablaroca con estructura metálica e instalación hidrosanitaria en un interior en obra.' },
     { base: 'crea-project-09', full: 'crea-project-09-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Interior en obra con muros de tablaroca, aberturas y materiales de instalación.' },
     { base: 'crea-project-10', full: 'crea-project-10-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Terraza en obra con columnas de acero, celosía de ladrillo y escalones de madera.' },

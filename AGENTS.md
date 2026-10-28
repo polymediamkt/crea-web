@@ -54,7 +54,7 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 ### Proyectos destacados
 - **4 tarjetas** en una rejilla con jerarquía (una grande y tres menores), más un botón **"Ver más proyectos"** centrado debajo.
 - Los captions de nombre/ubicación/tipo se muestran solo cuando estén confirmados (`PROYECTO_PIE` vacío en `js/main.js`). Mientras tanto no se pinta ningún marcador sobre la foto.
-- El botón despliega las fotos restantes (11) en el mismo estilo de tarjetas y cambia a "Ver menos".
+- El botón despliega las fotos restantes (10) en el mismo estilo de tarjetas y cambia a "Ver menos".
 - Cada imagen abre un **visor a pantalla completa**: botón de cerrar, flechas, teclado (Esc, ← y →), foco atrapado dentro del visor y `alt` descriptivo.
 - **Las 4 destacadas las eliges tú.** Criterio: variedad de tipologías, buena calidad, luz y composición; evita capturas de WhatsApp o fotos de baja resolución; la tarjeta grande debe ser la mejor foto horizontal. Define la lista en un solo lugar (un arreglo o archivo de datos) para cambiarla fácil, y dime cuáles elegiste y por qué.
 - La galería usa `loading="lazy"`.
