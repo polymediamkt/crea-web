@@ -765,8 +765,9 @@ header {
   gap: 13px;
 }
 
-/* 5 tarjetas: 3 arriba y 2 abajo, centradas. Va despues de .cards para que
-   su columnas ganen (misma especificidad). */
+/* 5 tarjetas: mantenimiento y aire acondicionado arriba (prioridad, 2 anchas)
+   y construcción, arquitectura y diseño abajo (3). Va despues de .cards para
+   que sus columnas ganen (misma especificidad). */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -777,12 +778,9 @@ header {
   grid-column: span 2;
 }
 
-.services-grid > .card:nth-child(4) {
-  grid-column: 2 / span 2;
-}
-
-.services-grid > .card:nth-child(5) {
-  grid-column: 4 / span 2;
+.services-grid > .card:nth-child(1),
+.services-grid > .card:nth-child(2) {
+  grid-column: span 3;
 }
 
 .card {
@@ -1914,9 +1912,18 @@ footer {
   }
 
   .services-grid > .card,
-  .services-grid > .card:nth-child(4),
-  .services-grid > .card:nth-child(5) {
+  .services-grid > .card:nth-child(1),
+  .services-grid > .card:nth-child(2) {
     grid-column: auto;
+  }
+
+  /* La quinta tarjeta queda sola en la última fila: se centra en lugar de
+     dejar un hueco a la derecha. */
+  .services-grid > .card:nth-child(5) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: calc(50% - 6.5px);
   }
 }
 
@@ -2071,8 +2078,8 @@ footer {
   }
 
   .services-grid > .card,
-  .services-grid > .card:nth-child(4),
-  .services-grid > .card:nth-child(5) {
+  .services-grid > .card:nth-child(1),
+  .services-grid > .card:nth-child(2) {
     grid-column: auto;
   }
 
