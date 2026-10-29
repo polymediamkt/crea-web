@@ -1081,7 +1081,8 @@ header {
 }
 
 .projects--featured .project:first-child {
-  height: 500px;
+  /* Ocupa las dos filas de la rejilla: así no queda hueco bajo la foto grande. */
+  height: 100%;
   grid-row: span 2;
 }
 
