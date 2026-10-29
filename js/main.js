@@ -183,21 +183,19 @@
      ------------------------------------------------------------------ */
 
   var PROYECTOS = [
-    { base: 'img_2823', full: 'img_2823-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'grande', alt: 'Alberca en azotea con camastros verdes y piso de madera, con vista a la ciudad de Cancún.' },
-    { base: 'anahuac', full: 'anahuac-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Gradas de estadio con techumbre tensada blanca y detalles naranjas junto a la cancha.' },
-    { base: 'img_e2805', full: 'img_e2805-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Terraza techada con escultura de red en forma de pez, muro estampado y vista a la ciudad.' },
-    { base: 'crea-project-13', full: 'crea-project-13-1200.webp', anchos: [480, 768, 1200], w: 1599, h: 1186, destacada: true, perfil: 'ancho', alt: 'Cancha de fútbol con techumbre tensada blanca y estructura naranja, en proceso de obra.' },
+    { base: 'obra-01', full: 'obra-01-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'grande', alt: 'Obra de CREA en Cancún, Quintana Roo — foto 01.' },
+    { base: 'obra-02', full: 'obra-02-768.webp', anchos: [480, 768], w: 949, h: 1280, destacada: true, perfil: 'par', alt: 'Obra de CREA en Cancún, Quintana Roo — foto 02.' },
+    { base: 'obra-03', full: 'obra-03-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'par', alt: 'Obra de CREA en Cancún, Quintana Roo — foto 03.' },
+    { base: 'obra-04', full: 'obra-04-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, destacada: true, perfil: 'ancho', alt: 'Obra de CREA en Cancún, Quintana Roo — foto 04.' },
 
-    { base: 'img_2810', full: 'img_2810-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 900, alt: 'Terraza de azotea con alberca, camastros verdes y piso de madera, con vista a la ciudad.' },
-    { base: 'crea-project-01', full: 'crea-project-01-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 1600, alt: 'Excavadora sobre terreno rocoso durante los trabajos de excavación, con vegetación al fondo.' },
-    { base: 'crea-project-02', full: 'crea-project-02-1200.webp', anchos: [480, 768, 1200], w: 1200, h: 1600, alt: 'Excavadora junto a un montículo de roca en una obra, con cielo despejado.' },
-    { base: 'crea-project-03', full: 'crea-project-03-1200.webp', anchos: [480, 768, 1200], w: 1300, h: 1600, alt: 'Retroexcavadora nivelando terreno en una obra, con trabajadores al fondo.' },
-    { base: 'crea-project-04', full: 'crea-project-04-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Interior en obra con muros de ladrillo, losa de concreto e instalaciones a la vista, con la ciudad al fondo.' },
-    { base: 'crea-project-05', full: 'crea-project-05-1600.webp', anchos: [480, 768, 1200, 1600], w: 1600, h: 1200, alt: 'Cancha de fútbol con techumbre tensada blanca y arcos naranjas, gradas y pasto sintético.' },
-    { base: 'crea-project-07', full: 'crea-project-07-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Muros de tablaroca con estructura metálica e instalación hidrosanitaria en un interior en obra.' },
-    { base: 'crea-project-09', full: 'crea-project-09-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Interior en obra con muros de tablaroca, aberturas y materiales de instalación.' },
-    { base: 'crea-project-10', full: 'crea-project-10-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Terraza en obra con columnas de acero, celosía de ladrillo y escalones de madera.' },
-    { base: 'crea-project-11', full: 'crea-project-11-768.webp', anchos: [480, 768], w: 900, h: 1600, alt: 'Escalones de madera entre muros de ladrillo y concreto en una terraza en obra.' }
+    { base: 'obra-05', full: 'obra-05-1200.webp', anchos: [480, 768, 1200], w: 1195, h: 896, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 05.' },
+    { base: 'obra-06', full: 'obra-06-1200.webp', anchos: [480, 768, 1200], w: 1280, h: 720, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 06.' },
+    { base: 'obra-07', full: 'obra-07-1200.webp', anchos: [480, 768, 1200], w: 1195, h: 896, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 07.' },
+    { base: 'obra-08', full: 'obra-08-1200.webp', anchos: [480, 768, 1200], w: 1280, h: 720, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 08.' },
+    { base: 'obra-09', full: 'obra-09-1200.webp', anchos: [480, 768, 1200], w: 1280, h: 949, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 09.' },
+    { base: 'obra-10', full: 'obra-10-1200.webp', anchos: [480, 768, 1200], w: 1280, h: 720, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 10.' },
+    { base: 'obra-11', full: 'obra-11-1200.webp', anchos: [480, 768, 1200], w: 1261, h: 802, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 11.' },
+    { base: 'obra-12', full: 'obra-12-1200.webp', anchos: [480, 768, 1200], w: 1280, h: 853, alt: 'Obra de CREA en Cancún, Quintana Roo — foto 12.' }
   ];
 
   var OBRA_DIR = 'assets/img/obra/';

@@ -55,9 +55,9 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 ### Proyectos destacados
 - **4 tarjetas** en una rejilla con jerarquía (una grande y tres menores), más un botón **"Ver más proyectos"** centrado debajo.
 - Los captions de nombre/ubicación/tipo se muestran solo cuando estén confirmados (`PROYECTO_PIE` vacío en `js/main.js`). Mientras tanto no se pinta ningún marcador sobre la foto.
-- El botón despliega las fotos restantes (10) en el mismo estilo de tarjetas y cambia a "Ver menos".
+- El botón despliega las fotos restantes (8) en el mismo estilo de tarjetas y cambia a "Ver menos".
 - Cada imagen abre un **visor a pantalla completa**: botón de cerrar, flechas, teclado (Esc, ← y →), foco atrapado dentro del visor y `alt` descriptivo.
-- **Las 4 destacadas las eliges tú.** Criterio: variedad de tipologías, buena calidad, luz y composición; evita capturas de WhatsApp o fotos de baja resolución; la tarjeta grande debe ser la mejor foto horizontal. Define la lista en un solo lugar (un arreglo o archivo de datos) para cambiarla fácil, y dime cuáles elegiste y por qué.
+- **Las 4 destacadas** siguen el orden numérico de los archivos (decisión de CREA, cambio 08): `obra-01` grande, `obra-02` y `obra-03` menores, `obra-04` ancha; `obra-05` a `obra-12` van a la galería. La lista vive en el arreglo `PROYECTOS` de `js/main.js`.
 - La galería usa `loading="lazy"`.
 
 ## Reglas de conversión
@@ -99,10 +99,8 @@ No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si 
 - Conserva UTM y `fbclid` en `sessionStorage` para no perderlos al navegar a `contacto/`; van como campos ocultos del formulario y en los eventos.
 
 ## Imágenes y logos
-- Se reutilizan las **mismas 17 fotos de obra del sitio actual**: `crea-project-01.jpg` a `crea-project-13.jpg` y, en `proyectos/`, `IMG_2810.webp`, `IMG_2823.webp`, `IMG_E2805.webp` y `WhatsApp-Image-2026-02-27-at-7.webp`.
-- Y los **mismos 21 logos PNG de clientes** (`Empresas_crea_assets-01.png` a `-21.png`).
-- El usuario los colocará en `assets/img/` y `assets/img/clients/`. **No los enlaces desde creaqr.mx**: el sitio actual será reemplazado.
-- Convierte las fotos a `.webp` optimizado y con tamaños responsivos.
+- **Galería de proyectos (cambio 08):** 12 fotos nuevas en `assets/img/obra/` con base `obra-01` a `obra-12` (variantes `-480`, `-768`, `-1200`; la vertical `obra-02` solo `-480` y `-768`). Los originales JPG/PNG/WebP de CREA quedan como fuente en `assets/img/obra-originales/`. Se eliminaron las 17 fotos anteriores (`crea-project-*`, `img_*`, `anahuac`) y la carpeta `assets/img/proyectos/`.
+- La barra de clientes y el portafolio usan material propio; el hero y "Nosotros" siguen con las excepciones de archivo ya documentadas abajo.
 - **Excepción acordada (2026-09-30):** el hero usa **video** en `assets/video/hero-obra.mp4` (1280×720, 8 s, sin audio, H.264, crf 28, `+faststart`) con `poster="assets/video/hero-obra-poster.webp"`. La foto de "Nosotros" usa stock de Unsplash en `assets/img/stock/nosotros-construccion-{480,768,1200}.webp` (Scott Blake). El portafolio y barra de clientes sí usan material propio.
   - Hero: reproducción automática silenciada con `playsinline`, `muted`, `loop`, `preload="metadata"`. Botón de pausa/reproducción accesible (WCAG 2.2.2). Con `prefers-reduced-motion: reduce` no se reproduce automáticamente.
 - **Excepción acordada (2026-10-01):** la columna derecha de "Cómo trabajamos" usa una **foto de stock de Unsplash** en `assets/img/stock/proceso-arquitectos-{480,768,1200}.webp` (`photo-1742112125554-fdb788faedaa`), en lugar del bloque isométrico hecho con CSS. Es material de archivo, no obra de CREA, y el `alt` lo declara. Dejar en `alt-proceso-arquitectos-*.webp` una alternativa descargada (`photo-1761227447538-f4e1ec0a9df6`) por si CREA prefiere esa.
@@ -148,7 +146,7 @@ Cuando falte un dato (teléfono de llamadas distinto del WhatsApp, dirección, r
 - Validar el proceso de 4 pasos y los beneficios de cada servicio.
 - Dónde se alojará el sitio (hosting); afecta al servicio del formulario.
 - Horario de atención publicado: "Lunes a viernes, 9 a.m. a 6 p.m."
-- Confirmar nombres y ubicación de las obras destacadas (alberca en azotea, gradas de estadio, terraza con escultura y cancha). La cancha está en proceso de obra y la sección dice "Obra terminada, no promesas.": decidir si se mantiene, se rotula o se ajusta el copy.
+- Confirmar nombres y ubicación de las 12 obras de la galería (hoy sin pie de tarjeta) y, si CREA los aporta, sustituir los `alt` neutros por descripciones por foto.
 - Qué incluyen las pólizas de mantenimiento, tiempos de respuesta y cobertura.
 - **Rangos del FAQ:** confirmar (o corregir) los $12,000–$24,000 MXN/m² y los plazos de 8–14 meses de obra + 2–4 de proyecto y trámites. Hoy son referencias del mercado local 2026, no tarifas propias. Si CREA tiene sus propias cifras, sustituirlas en el texto visible y en el schema `FAQPage`.
 - **Permisos:** confirmar si CREA tramita licencias, DRO, CFE y conexiones. Es la consulta frecuente del sector que falta en el FAQ del inicio.
