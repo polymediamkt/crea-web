@@ -151,7 +151,7 @@ Cuando falte un dato (teléfono de llamadas distinto del WhatsApp, dirección, r
 - **Rangos del FAQ:** confirmar (o corregir) los $12,000–$24,000 MXN/m² y los plazos de 8–14 meses de obra + 2–4 de proyecto y trámites. Hoy son referencias del mercado local 2026, no tarifas propias. Si CREA tiene sus propias cifras, sustituirlas en el texto visible y en el schema `FAQPage`.
 - **Permisos:** confirmar si CREA tramita licencias, DRO, CFE y conexiones. Es la consulta frecuente del sector que falta en el FAQ del inicio.
 - **Paquete de aire y garantía:** confirmar alcance, duración y cobertura para cerrar las respuestas 02 y 03 del FAQ de aire acondicionado.
-- Redacción y aprobación legal del aviso de privacidad (hoy es un texto de trabajo).
+- Aviso de privacidad: integrado desde el documento de CREA (2026-10-29). Confirmar la fecha de vigencia y que la versión publicada sea la aprobada por CREA.
 - Aprobar los tokens `--blue-cta` y `--blue-ink` (ver `cambio-05-mejora-conversion.md`).
 
 ## Forma de trabajo

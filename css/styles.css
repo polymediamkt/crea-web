@@ -1716,6 +1716,29 @@ footer {
   font-weight: 800;
 }
 
+.legal-copy h3 {
+  font-size: 15px;
+  margin: 22px 0 0;
+  font-weight: 800;
+}
+
+.legal-copy ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  max-width: 620px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.legal-copy li {
+  margin-top: 3px;
+}
+
+.legal-copy li strong {
+  color: var(--black);
+}
+
 .legal-copy a {
   color: var(--blue-ink);
   text-decoration: underline;
@@ -1726,8 +1749,57 @@ footer {
   min-height: 44px;
 }
 
+/* Los enlaces dentro del texto legal van en línea: el área táctil de 44px
+   se reserva para botones (p. ej. "Volver al contacto"). */
+.legal-copy p a,
+.legal-copy li a {
+  display: inline;
+  min-height: 0;
+}
+
+/* El botón de cierre conserva su estilo de botón (texto blanco, sin subrayado). */
+.legal-copy .legal-back a {
+  display: inline-flex;
+  min-height: 44px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* El título acompaña la lectura del aviso en pantallas grandes. */
+.legal-grid > div:first-child {
+  position: sticky;
+  top: 120px;
+}
+
 .legal-back {
   margin-top: 34px;
+}
+
+/* Pie simplificado de la página legal: dos bloques, sin las columnas del inicio. */
+.foot.foot--legal {
+  grid-template-columns: 1.35fr 1fr;
+}
+
+.foot-note {
+  font-size: 13px;
+  color: #9a9a9a;
+}
+
+.foot-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: #9a9a9a;
+}
+
+.foot-data a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.foot-data a:hover {
+  text-decoration: underline;
 }
 
 /* ---------- 15. Barra fija móvil + botón flotante escritorio ---------- */
@@ -2078,6 +2150,10 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .legal-grid > div:first-child {
+    position: static;
+  }
+
   .services-grid > .card,
   .services-grid > .card:nth-child(1),
   .services-grid > .card:nth-child(2) {
@@ -2194,6 +2270,10 @@ footer {
     grid-template-columns: 1fr;
     gap: 34px;
     padding-bottom: 32px;
+  }
+
+  .foot.foot--legal {
+    grid-template-columns: 1fr;
   }
 
   .foot-brand img {
