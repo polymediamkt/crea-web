@@ -767,6 +767,8 @@
         gallery.setAttribute('hidden', '');
         toggle.textContent = 'Ver más proyectos';
         toggle.setAttribute('aria-expanded', 'false');
+        // La galería se contrae por encima del botón: lo mantenemos a la vista.
+        toggle.scrollIntoView({ block: 'nearest' });
       }
     });
   }

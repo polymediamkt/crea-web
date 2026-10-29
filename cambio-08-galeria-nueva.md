@@ -13,6 +13,7 @@ Las 4 destacadas se ordenan **por el número del archivo**, no por criterio visu
 - **Originales movidos dentro del proyecto** a `assets/img/obra-originales/` (01–12 en su formato original).
 - **Eliminado:** los 34 webp de las 14 fotos anteriores (`crea-project-*`, `img_2810`, `img_2823`, `img_e2805`, `anahuac`), la carpeta `assets/img/proyectos/` (3 `service-*.webp` del sitio anterior) y su línea en `.gitignore`.
 - **`js/main.js`:** arreglo `PROYECTOS` con 12 entradas, dimensiones reales y `alt` neutro. La vertical `obra-02` va en un slot "par" de la rejilla destacada (se recorta con `object-fit: cover`, como el resto).
+- **Botón del portafolio:** se movió **después de la galería** (antes iba entre las destacadas y las fotos extra). Así "Ver menos" queda debajo de todas las fotos y se llega a él directo al terminar de verlas; al contraer, el botón se mantiene a la vista (`scrollIntoView`).
 - **`AGENTS.md`:** sección de imágenes, conteo de la galería (8 restantes) y pendientes.
 
 ## Pendiente de CREA
@@ -22,6 +23,7 @@ Las 4 destacadas se ordenan **por el número del archivo**, no por criterio visu
 ## Verificación
 - 35 variantes generadas; dimensiones y pesos coherentes (15–203 KB).
 - Render a 1440/390: 4 destacadas + 8 en galería, sin imágenes rotas ni desbordes.
+- Botón del portafolio: colapsado queda bajo las destacadas; expandido, "Ver menos" aparece al final de las 8 fotos; al contraer, el botón vuelve a quedar visible sin salto brusco.
 - `node --check js/main.js`, consola limpia y enlaces internos OK.
 
 ## Rollback

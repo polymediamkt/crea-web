@@ -53,7 +53,7 @@ La composición de cada sección es libre: usa estos activos para armar la estru
 No digas que CREA "desarrolla proyectos inmobiliarios": es una constructora. Si hace falta hablar de clientes, puedes mencionar que trabaja para desarrolladores, inversionistas y proyectos residenciales, comerciales y de hospitalidad solo si CREA lo confirma.
 
 ### Proyectos destacados
-- **4 tarjetas** en una rejilla con jerarquía (una grande y tres menores), más un botón **"Ver más proyectos"** centrado debajo.
+- **4 tarjetas** en una rejilla con jerarquía (una grande y tres menores), más un botón **"Ver más proyectos"** centrado al final, después de la galería, para que al expandir quede debajo de todas las fotos.
 - Los captions de nombre/ubicación/tipo se muestran solo cuando estén confirmados (`PROYECTO_PIE` vacío en `js/main.js`). Mientras tanto no se pinta ningún marcador sobre la foto.
 - El botón despliega las fotos restantes (8) en el mismo estilo de tarjetas y cambia a "Ver menos".
 - Cada imagen abre un **visor a pantalla completa**: botón de cerrar, flechas, teclado (Esc, ← y →), foco atrapado dentro del visor y `alt` descriptivo.
